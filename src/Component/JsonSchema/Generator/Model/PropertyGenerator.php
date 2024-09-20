@@ -48,29 +48,21 @@ trait PropertyGenerator
             $docTypeHint .= '|null';
         }
 
-        $description = sprintf(<<<EOD
-/**
- * %s
- *
-
-EOD
-            , $property->getDescription());
-
-        if ($property->isDeprecated()) {
-            $description .= <<<EOD
- * @deprecated
- *
-
-EOD;
+        $description = ['/**'];
+        if ($property->getDescription()) {
+            foreach (array_map(rtrim(...), explode("\n", $property->getDescription())) as $line) {
+                $description[] = ' * ' . $line;
+            }
+            $description[] = ' *';
         }
+        if ($property->isDeprecated()) {
+            $description[] = ' * @deprecated';
+            $description[] = ' *';
+        }
+        $description[] = \sprintf(' * @var %s', $docTypeHint);
+        $description[] = ' */';
 
-        $description .= sprintf(<<<EOD
- * @var %s
- */
-EOD
-            , $docTypeHint);
-
-        return new Doc($description);
+        return new Doc(implode("\n", $description));
     }
 
     private function getDefaultAsExpr($value): Stmt\Expression

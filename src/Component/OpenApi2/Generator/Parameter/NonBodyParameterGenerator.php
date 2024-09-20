@@ -112,7 +112,14 @@ class NonBodyParameterGenerator extends ParameterGenerator
     {
         $type = implode('|', $this->convertParameterType($parameter->getType()));
 
-        return sprintf(' * @param %s $%s %s', $type, $this->getInflector()->camelize($parameter->getName()), $parameter->getDescription() ?: '');
+        $description = array_map(rtrim(...), explode("\n", $parameter->getDescription() ?: ''));
+
+        $param = [rtrim(\sprintf(' * @param %s $%s %s', $type, $this->getInflector()->camelize($parameter->getName()), array_shift($description)))];
+        foreach ($description as $line) {
+            $param[] = \sprintf(' * %s', $line);
+        }
+
+        return implode("\n", $param);
     }
 
     /**
@@ -122,7 +129,14 @@ class NonBodyParameterGenerator extends ParameterGenerator
     {
         $type = implode('|', $this->convertParameterType($parameter->getType()));
 
-        return sprintf(' *     @var %s $%s %s', $type, $parameter->getName(), $parameter->getDescription() ?: '');
+        $description = array_map(rtrim(...), explode("\n", $parameter->getDescription() ?: ''));
+
+        $var = [rtrim(\sprintf(' *     @var %s $%s %s', $type, $parameter->getName(), array_shift($description)))];
+        foreach ($description as $line) {
+            $var[] = \sprintf(' *     %s', $line);
+        }
+
+        return implode("\n", $var);
     }
 
     /**
