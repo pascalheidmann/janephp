@@ -5,14 +5,10 @@ namespace Jane\Component\OpenApi3\Tests\Client\Model;
 class Error
 {
     /**
-     * 
-     *
      * @var string
      */
     protected $message;
     /**
-     * 
-     *
      * @return string
      */
     public function getMessage() : string
@@ -20,8 +16,6 @@ class Error
         return $this->message;
     }
     /**
-     * 
-     *
      * @param string $message
      *
      * @return self
