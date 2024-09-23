@@ -17,7 +17,7 @@ class AuthenticationRegistryTest extends TestCase
     protected function setUp(): void
     {
         $plugins = [];
-        $plugins[] = new class() implements AuthenticationPlugin {
+        $plugins[] = new class implements AuthenticationPlugin {
             public function authentication(RequestInterface $request): RequestInterface
             {
                 $request->withHeader('A', 'A');
@@ -31,7 +31,7 @@ class AuthenticationRegistryTest extends TestCase
             }
         };
 
-        $plugins[] = new class() implements AuthenticationPlugin {
+        $plugins[] = new class implements AuthenticationPlugin {
             public function authentication(RequestInterface $request): RequestInterface
             {
                 $request->withHeader('B', 'B');
@@ -45,7 +45,7 @@ class AuthenticationRegistryTest extends TestCase
             }
         };
 
-        $plugins[] = new class() implements AuthenticationPlugin {
+        $plugins[] = new class implements AuthenticationPlugin {
             public function authentication(RequestInterface $request): RequestInterface
             {
                 $request->withHeader('C', 'C');
