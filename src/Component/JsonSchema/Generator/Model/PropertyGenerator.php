@@ -21,7 +21,7 @@ trait PropertyGenerator
      */
     abstract protected function getParser(): Parser;
 
-    protected function createProperty(Property $property, string $namespace, $default = null, bool $strict = true): Stmt
+    protected function createProperty(Property $property, string $namespace, mixed $default = null, bool $strict = true): Stmt
     {
         $propertyName = $property->getPhpName();
         $propertyStmt = new Stmt\PropertyProperty($propertyName);

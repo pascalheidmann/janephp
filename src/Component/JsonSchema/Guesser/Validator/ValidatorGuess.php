@@ -16,7 +16,7 @@ class ValidatorGuess
     /** @var string|null */
     private $subProperty;
 
-    public function __construct(string $constraintClass, array $arguments = [], string $subProperty = null, string $classReference = null)
+    public function __construct(string $constraintClass, array $arguments = [], string|null $subProperty = null, string|null $classReference = null)
     {
         $this->constraintClass = $constraintClass;
         $this->arguments = $arguments;

@@ -70,7 +70,7 @@ class NormalizerGenerator implements GeneratorInterface
      * @param bool $useCacheableSupportsMethod Whether to use the CacheableSupportsMethodInterface interface, for >sf 4.1
      * @param bool $skipNullValues             Skip null values or not
      */
-    public function __construct(Naming $naming, Parser $parser, bool $useReference = true, bool $useCacheableSupportsMethod = null, bool $skipNullValues = true, bool $skipRequiedFields = false, bool $validation = false, bool $includeNullValue = true)
+    public function __construct(Naming $naming, Parser $parser, bool $useReference = true, bool|null $useCacheableSupportsMethod = null, bool $skipNullValues = true, bool $skipRequiedFields = false, bool $validation = false, bool $includeNullValue = true)
     {
         $this->naming = $naming;
         $this->parser = $parser;

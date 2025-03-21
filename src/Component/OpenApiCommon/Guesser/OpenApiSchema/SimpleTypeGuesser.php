@@ -8,7 +8,7 @@ class SimpleTypeGuesser extends BaseSimpleTypeGuesser
 {
     use SchemaClassTrait;
 
-    public function __construct(string $schemaClass, array $typesSupported = null)
+    public function __construct(string $schemaClass, array|null $typesSupported = null)
     {
         $this->schemaClass = $schemaClass;
         if (null !== $typesSupported) {

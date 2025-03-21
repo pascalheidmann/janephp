@@ -15,7 +15,7 @@ class MultipleType extends Type
     protected $types;
     protected $discriminatorProperty;
 
-    public function __construct(object $object, array $types = [], $discriminatorProperty = null)
+    public function __construct(object $object, array $types = [], mixed $discriminatorProperty = null)
     {
         parent::__construct($object, 'mixed');
 
@@ -36,7 +36,7 @@ class MultipleType extends Type
     /**
      * Add a type.
      */
-    public function addType(Type $type, $discriminant = null): self
+    public function addType(Type $type, mixed $discriminant = null): self
     {
         if ($type instanceof self) {
             foreach ($type->getTypes() as $subType) {

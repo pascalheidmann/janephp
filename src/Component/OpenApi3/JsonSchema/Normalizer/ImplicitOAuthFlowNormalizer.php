@@ -18,18 +18,18 @@ class ImplicitOAuthFlowNormalizer implements DenormalizerInterface, NormalizerIn
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null, array $context = []) : bool
+    public function supportsDenormalization($data, $type, mixed $format = null, array $context = []) : bool
     {
         return $type === 'Jane\\Component\\OpenApi3\\JsonSchema\\Model\\ImplicitOAuthFlow';
     }
-    public function supportsNormalization($data, $format = null, array $context = []) : bool
+    public function supportsNormalization($data, mixed $format = null, array $context = []) : bool
     {
         return $data instanceof \Jane\Component\OpenApi3\JsonSchema\Model\ImplicitOAuthFlow;
     }
     /**
      * @return mixed
      */
-    public function denormalize(mixed $data, string $type, string $format = null, array $context = []) : mixed
+    public function denormalize(mixed $data, string $type, string|null $format = null, array $context = []) : mixed
     {
         if (isset($data['$ref'])) {
             return new Reference($data['$ref'], $context['document-origin']);
@@ -76,7 +76,7 @@ class ImplicitOAuthFlowNormalizer implements DenormalizerInterface, NormalizerIn
     /**
      * @return array|string|int|float|bool|\ArrayObject|null
      */
-    public function normalize(mixed $object, string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
+    public function normalize(mixed $object, string|null $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
     {
         $data = [];
         $data['authorizationUrl'] = $object->getAuthorizationUrl();

@@ -14,7 +14,7 @@ abstract class BaseEndpoint implements Endpoint
 
     abstract public function getMethod(): string;
 
-    abstract public function getBody(SerializerInterface $serializer, $streamFactory = null): array;
+    abstract public function getBody(SerializerInterface $serializer, mixed $streamFactory = null): array;
 
     abstract public function getUri(): string;
 
